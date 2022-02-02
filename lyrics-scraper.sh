@@ -19,14 +19,14 @@ if [[ -z ${1} ]]; # If an argument for song name has not been passed, set the va
 then
 	song_encoded="0"
 else
-	continue
+	true
 fi
 
 if [[ -z ${2} ]]; # If an argument for artist name has not been passed, set the variable to zero, else set it to the url-encoded argument.
 then
 	artist_encoded="0"
 else
-	continue
+	true
 fi
 
 if [[ -z lang_check ]]; # If an argument for language has not been passed, set the variable to "None"; else, normalize the string and make it all lowercase to avoid discrepancies and keep the case statement simple since Bash is case-sensitive.
@@ -34,7 +34,7 @@ then
 	language_raw="None"
 else
 	language_raw=$(echo "$3" | awk '{print tolower($0)}')
-	continue
+	true
 fi
 
 if [ $# -eq 0 ];
