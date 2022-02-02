@@ -4,6 +4,11 @@ This is a simple utility to scrape lyrics off LyricsTranslate.com in any languag
 
 To run, make sure curl 7.79.1 and html2text 2016.1.16 or upward are installed. If not, then install them. Then, <br>
 ```
+$ sh lyrics-scraper.sh $1 $2 $3
+```
+Or, you could make it into an executable. <br>
+
+```
 $ chmod +x lyrics-scraper.sh
 $ ./lyrics_scraper.sh $1 $2 $3
 ```
