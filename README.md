@@ -4,13 +4,11 @@ This is a simple utility to scrape lyrics off LyricsTranslate.com in any languag
 
 To run, make sure curl 7.79.1 and html2text 2016.1.16 or upward are installed. If not, then install them. Then, <br>
 ```
-$ sh lyrics-scraper.sh $1 $2 $3
+$ sh install.sh
 ```
-Or, you could make it into an executable. <br>
-
+That will install the script to the /usr/bin folder and make it available for use everywhere on the computer. Using the utility is as simple as
 ```
-$ chmod +x lyrics-scraper.sh
-$ ./lyrics_scraper.sh $1 $2 $3
+$ lyrics-scraper $1 $2 $3
 ```
 Wnere, <br>
 $1 is the first argument passed to the file during the instance of the execution, the name of the song for which you wish to scrape translated lyrics. <br>
@@ -19,8 +17,8 @@ $3 is the third argument passed to the file during the instance of execution, th
 
 For example:<br>
 ```
-$ ./lyrics-scraper.sh "Despacito" "Luis Fonsi" "English"
+$ lyrics-scraper "foo" "bar" "English"
 ```
-The above command should create a file "despacito-english.txt" in the folder the terminal is working in at the moment.<br>
+The above command should create a file "foo-english.txt" in the folder the terminal is working in at the moment.<br>
 It is as simple as that and fully functional as is. <br>
-Thanks for downloading!<br>
+Thank you for downloading!<br>
