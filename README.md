@@ -17,8 +17,12 @@ $3 is the third argument passed to the file during the instance of execution, th
 
 For example:<br>
 ```
-$ lyrics-scraper "foo" "bar" "English"
+$ lyrics-scraper "foo" "bar" "Spanish"
 ```
-The above command should create a file "foo-english.txt" in the folder the terminal is working in at the moment.<br>
+The above command should create a file "foo-spanish.txt" in the folder the terminal is working in at the moment.<br>
+Also, if you have to translate a song which is in another script than Roman (say Cyrillic), use the original for best encoding experience:
+```
+$ lyrics-scraper "фу" "бар" "English"
+```
 It is as simple as that and fully functional as is. <br>
 Thank you for downloading!<br>
