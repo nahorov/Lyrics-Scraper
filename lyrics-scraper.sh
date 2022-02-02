@@ -1,4 +1,12 @@
 #!/bin/bash
+# Created in GNU bash, version 5.1.8(1)-release (x86_64-redhat-linux-gnu)
+
+# A simple command-line utility to scrape translated lyrics of any song in any language from LyricsTranslate.com provided the translation exists on their database,
+# and store it in a text-file.
+# To use, run sh lyrics-scraper.sh and pass arguments:
+# $1 = Name of the song
+# $2 = Name of the artist
+# $3 = Language in which you want the output.
 
 # The following code is to URL-encode the first two arguments passed and to check if a third argument has been passed. 
 # URL-encoding ensures that special and reserved characters are converted to their ASCII Hex values to make the URL-friendly.
