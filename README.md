@@ -25,4 +25,6 @@ Also, if you have to translate a song which is in another script than Roman (say
 $ lyrics-scraper "фу" "бар" "English"
 ```
 It is as simple as that and fully functional as is. <br>
+You could also use it by mentioning only a keyword in the name of the song for some songs in the first argument instead of entire name of the song. Sometime because of the irregularity of the database, it is even necessary that you do so.
+You could also pass only the name of the song and no other arguments, though passing of language desired is highly recommended. You can get away with passing only the name of the song and passing the desired language, but passing no artist. But the script needs to be informed that you are choosing to not enter the name of the artist by including a pair of inverted commas with nothing between them as the second argument. 
 Thank you for downloading!<br>
