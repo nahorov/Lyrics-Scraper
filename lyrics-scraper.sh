@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Created in GNU bash, version 5.1.8(1)-release (x86_64-redhat-linux-gnu)
-
+# Created by nahorov, at github.com/nahorov
+#
 # A simple command-line utility to scrape translated lyrics of any song in any language from LyricsTranslate.com provided the translation exists on their database,
 # and store it in a text-file.
 # To use, run sh lyrics-scraper.sh and pass arguments:
@@ -284,8 +285,8 @@ else
 	file_language_name=$(echo "$3" | awk '{print tolower($0)}')
 
 	# To download the HTML code of webpage at the URL we just generated
-	echo "Fetching raw data from $search_url, please wait..."
-	curl $search_url > .tmp_input.html
+	# echo -e "Fetching raw data from $search_url, please wait...\n"
+	curl -s $search_url > .tmp_input.html
 	if grep -q "Your search yielded no results." .tmp_input.html; # If the search query didn't yield any results, the program is to be terminated
 	then
 		echo "Sorry. Your search yielded no results. Please try again and check if the arguments provided were correct."
@@ -295,15 +296,27 @@ else
 		grep "<a href" < .tmp_input.html | sed -r 's#^.*<a href="([^"]+)">([^<]+)</a>.*$#\1\t\2#' > .tmp_search_output.txt
 		cat .tmp_search_output.txt | grep "$1" > .tmp_search_results.txt
 		extension=$(cat .tmp_search_results.txt | awk '{print $1}' | sed -z 's/<div//g' | sed -z 's/\n//g' | sed 's/\.html.*/.html/')
-		echo "$extension"
+		# echo "$extension"
 		# Creation of the URL where the lyrics we want are located on the webpage by attaching the pruned short-hand link we acquired through the above code
 		song_url=$(echo "https://lyricstranslate.com$extension")
-		echo "Fetching raw data from $song_url, please wait..."
-		curl $song_url | html2text > .tmp_lyrics_raw.txt
-		cat .tmp_lyrics_raw.txt | sed -n '/A A/,$p' | sed -n '/Thanks! ❤|/q;p' > "${file_song_name}-${file_language_name}.txt"
-		
+		# echo -e "Fetching raw data from $song_url, please wait...\n"
+		curl -s $song_url | html2text > .tmp_lyrics_raw.txt
+
+		# To make the section at the top of the text file naming the song and the artist.
+		print_song_name=$(cat .tmp_lyrics_raw.txt | grep "* Song:" | cut -d "[" -f2 | cut -d "]" -f1)
+		print_artist_name=$(cat .tmp_lyrics_raw.txt | grep "* Artist:" | cut -d "[" -f2 | cut -d "]" -f1) 
+
+		# Scraping the lyrics
+		cat .tmp_lyrics_raw.txt | sed -n '/A A/,$p' | sed -n '/Thanks! ❤|/q;p' > .tmp_scraped.txt
+
+		# Creating the panel for writing the name of the song and the artist at the top of the text file
+		echo -e "--------------------------------------------------\n\nSong:   $print_song_name\nArtist: $print_artist_name\n\n--------------------------------------------------\n\n" > .tmp_credits.txt
+
+		# Creating the final text file
+	    cat .tmp_credits.txt .tmp_scraped.txt > ${file_song_name}-${file_language_name}.txt
+	
 		# Garbage-disposal, we don't need these files anymore.
-		rm -rf .tmp_input.html .tmp_search_output.txt .tmp_search_results.txt .tmp_lyrics_raw.txt 
+		rm -rf .tmp_input.html .tmp_search_output.txt .tmp_search_results.txt .tmp_lyrics_raw.txt .tmp_scraped.txt .tmp_credits.txt
 
 		# To indicate the process is over and the job has been done.
 		echo "Success! File ${file_song_name}-${file_language_name}.txt has been created."
