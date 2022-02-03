@@ -11,9 +11,9 @@ That will install the script to the /usr/bin folder and make it available for us
 $ lyrics-scraper SONG ARTIST LANGUAGE
 ```
 Wnere, <br>
-SONG is the first argument passed to the script during the instance of the execution, the name of the song for which you wish to scrape translated lyrics. <br>
-ARTIST is the second argument passed to the script during the instance of execution, the name of the artist to whom the song is credited. <br>
-LANGUAGE is the third argument passed to the script during the instance of execution, the target language in which you want to scrape the lyrics in.
+```SONG``` is the first argument passed to the script during the instance of the execution, the name of the song for which you wish to scrape translated lyrics. <br>
+```ARTIST``` is the second argument passed to the script during the instance of execution, the name of the artist to whom the song is credited. <br>
+```LANGUAGE``` is the third argument passed to the script during the instance of execution, the target language in which you want to scrape the lyrics in.
 
 For example:<br>
 ```
