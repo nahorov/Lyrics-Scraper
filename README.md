@@ -8,27 +8,32 @@ $ sh install.sh
 ```
 That will install the script to the /usr/bin folder and make it available for use everywhere on the computer. Using the utility is as simple as
 ```
-$ lyrics-scraper $1 $2 $3
+$ lyrics-scraper SONG ARTIST LANGUAGE
 ```
 Wnere, <br>
-$1 is the first argument passed to the file during the instance of the execution, the name of the song for which you wish to scrape translated lyrics. <br>
-$2 is the second argument passed to the file during the instance of execution, the name of the artist to whom the song is credited. <br>
-$3 is the third argument passed to the file during the instance of execution, the target language in which you want to scrape the lyrics in.
+SONG is the first argument passed to the script during the instance of the execution, the name of the song for which you wish to scrape translated lyrics. <br>
+ARTIST is the second argument passed to the script during the instance of execution, the name of the artist to whom the song is credited. <br>
+LANGUAGE is the third argument passed to the script during the instance of execution, the target language in which you want to scrape the lyrics in.
 
 For example:<br>
 ```
 $ lyrics-scraper "foo" "bar" "Spanish"
 ```
-The above command should create a file "foo-spanish.txt" in the folder the terminal is working in at the moment.<br>
-Also, if you have to translate a song which is in another script than Roman (say Cyrillic), use the original for best encoding experience:
+The above command should create a file "foo-spanish.txt" in the present working directory<br><br>
+
+If you have to translate a song which is in another script than Roman (say Cyrillic), use the original for best encoding experience:
 ```
 $ lyrics-scraper "фу" "бар" "English"
 ```
-It is as simple as that and fully functional as is. <br>
-You could also use it by mentioning only a keyword in the name of the song for some songs in the first argument instead of entire name of the song. Sometime because of the irregularity of the database, it is even necessary that you do so.
-You could also pass only the name of the song and no other arguments, though passing of language desired is highly recommended. You can get away with passing only the name of the song and passing the desired language, but passing no artist. But the script needs to be informed that you are choosing to not enter the name of the artist by including a pair of inverted commas with nothing between them as the second argument. <br>
+You could also use it by mentioning only a keyword in the name of the song for some songs in the first argument instead of entire name of the song. Sometime because of the irregularity of the database, it is even necessary that you do so. <br>
+You could also pass only the name of the song and no other arguments, though passing of language desired is highly recommended. <br>
+You can get away with passing only the name of the song and passing the desired language, but passing no artist. But the script needs to be informed that you are choosing to not enter the name of the artist by including a pair of inverted commas with nothing between them as the second argument. <br>
 For example: <br>
 ```
 $ lyrics-scraper "foo" "" "English"
 ```
+
+This will get the translation present at the first link that appears in the search. <br>
+The name of the song and the name of the artist will also be mentioned at the very top of the text file that is generated. <br>
+It is simple to use, and fully-functional as is. <br><br>
 Thank you for downloading!<br>
