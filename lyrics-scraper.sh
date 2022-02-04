@@ -10,7 +10,7 @@
 # $3 = Language in which you want the output.
 
 # The following code is to URL-encode the first two arguments passed and to check if a third argument has been passed. 
-# URL-encoding ensures that special and reserved characters are converted to their ASCII Hex values to make the URL-friendly.
+# URL-encoding ensures that special and reserved characters are converted to their ASCII Hex values to make them URL-friendly.
 song_encoded=$(echo -ne "$1" | hexdump -v -e '/1 "%02x"' | sed 's/\(..\)/%\1/g')
 artist_encoded=$(echo -ne "$2" | hexdump -v -e '/1 "%02x"' | sed 's/\(..\)/%\1/g')
 lang_check=$(echo "$3")
