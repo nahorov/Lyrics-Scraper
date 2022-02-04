@@ -312,7 +312,7 @@ else
 		echo -e "--------------------------------------------------\n\nSong:   $print_song_name\nArtist: $print_artist_name\n\n--------------------------------------------------\n\n" > .tmp_credits.txt
 
 		# Creating the final text file
-	    cat .tmp_credits.txt .tmp_scraped.txt > "${file_song_name}-${file_language_name}.txt"
+	   	cat .tmp_credits.txt .tmp_scraped.txt > "${file_song_name}-${file_language_name}.txt"
 
 		# Garbage-disposal, we don't need these files anymore.
 		rm -rf .tmp_input.html .tmp_search_output.txt .tmp_search_results.txt .tmp_lyrics_raw.txt .tmp_scraped.txt .tmp_credits.txt
