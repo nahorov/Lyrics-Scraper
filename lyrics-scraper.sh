@@ -293,7 +293,10 @@ else
 	else
 		# Pruning of the raw data to find the short-hand link of the webpage we want.
 		grep "<a href" < .tmp_input.html | sed -r 's#^.*<a href="([^"]+)">([^<]+)</a>.*$#\1\t\2#' > .tmp_search_output.txt
-		cat .tmp_search_output.txt | grep "$1" > .tmp_search_results.txt
+		
+		# To locate the anchor text to which the hyperlink we need might be attached. It is imperative that there be no spelling mistakes while passing arguments
+		# to the script cause the argument is what is used directly to search for the hyperlink. 
+		cat .tmp_search_output.txt | grep -i "$1" > .tmp_search_results.txt # to make sure the search is not case-sensitive and therefore, more inclusive of possible results
 		extension=$(cat .tmp_search_results.txt | awk '{print $1}' | sed -z 's/<div//g' | sed -z 's/\n//g' | sed 's/\.html.*/.html/')
 		# echo "$extension"
 		# Creation of the URL where the lyrics we want are located on the webpage by attaching the pruned short-hand link we acquired through the above code
